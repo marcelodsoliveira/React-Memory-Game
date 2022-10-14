@@ -32,12 +32,20 @@ const App = () => {
       item: null, shown: false, permanentShown: false
     });
     // 2.2 - preencher o grid
-
+    for(let w = 0; w < 2; w++) {
+      for(let i = 0; i < items.length; i++) {
+        let pos = -1;
+        while(pos < 0 || tmpGrid[pos].item !== null) {
+          pos = Math.floor(Math.random() * (items.length * 2));
+        }
+        tmpGrid[pos].item = i;
+      }
+    }
     // 2.3 - jogar no state
     setGridItems(tmpGrid);
-
+   
     // passo 3 - começar o jogo
-    setPlaying(true);
+    setPlaying(true); 
   }
 
   return (
