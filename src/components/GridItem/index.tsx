@@ -1,6 +1,6 @@
 import { GridItemType } from '../../types/GridItemType';
 import * as C from './styles';
-import b7svg from '../../svgs/b7svg.svg';
+import b7svg from '../../svgs/b7.svg';
 
 type Props = {
   item: GridItemType,
