@@ -35,6 +35,6 @@ export const Label = styled.div`
   justify-content: center;
   align-itens: center;
   flex: 1;
-  padding: 0 20px;
+  padding: 15px 22px;
 
 `;
