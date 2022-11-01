@@ -62,7 +62,14 @@ const App = () => {
   }
 
   const handleItemClick = (index: number) => {
-
+    if(playing && index !== null && shownCount < 2) {
+      let tmpGrid = [...gridItems];
+      if(tmpGrid[index].permanentShown === false && tmpGrid[index].shown === false) {
+        tmpGrid[index].shown = true;
+        setShownCount(shownCount + 1);
+      }
+      setGridItems(tmpGrid);
+    }
   }
 
   return (
@@ -73,6 +80,7 @@ const App = () => {
         </C.LogoLink>
 
         <C.InfoArea>
+          shownCount: {shownCount}
           <InfoItem label="Tempo" value={formatTimeElapsed(timeElapsed)} />
           <InfoItem label="Movimentos" value="0" />
         </C.InfoArea>
