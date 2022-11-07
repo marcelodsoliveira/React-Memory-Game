@@ -11,6 +11,7 @@ import { GridItem } from './components/GridItem';
 import { GridItemType } from './types/GridItemType';
 import { items} from './data/items';
 import { formatTimeElapsed } from './helpers/formatTimeElapsed';
+import { getDiffieHellman } from 'crypto';
 
 
 
@@ -30,6 +31,32 @@ const App = () => {
     }, 1000);
     return () => clearInterval(timer);
   }, [playing, timeElapsed]);
+
+  // verify if opened are equal
+  useEffect(() => {
+    if(shownCount === 2) {
+      let opened = gridItems.filter(item => item.shown === true);
+      if(opened.length === 2) {
+
+        // First verification - If both are equal, make every shown permanent
+        if(opened[0].item === opened[1].item) {
+          let tmpGrid = [...gridItems]; {
+            for(let i in tmpGrid) {
+              if(tmpGrid[i].shown) {
+                tmpGrid[i].permanentShown = true;
+                tmpGrid[i].shown = false;
+              }
+            }
+            setGridItems(tmpGrid);
+            setShownCount(0);
+          }
+        }
+
+        // Second verification - 
+
+      }
+    }
+  }, [shownCount, gridItems]);
 
   const resetAndCreateGrid = () => {
     // passo 1 - resetar o jogo
